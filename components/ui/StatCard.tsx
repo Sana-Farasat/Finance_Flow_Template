@@ -83,7 +83,7 @@ export function StatCard({ stat, className }: StatCardProps) {
         // Hover effect
         "hover:shadow-lg hover:border-gray-300 dark:hover:border-gray-700",
         // Ensure content doesn't overflow
-        "overflow-hidden min-w-[280px]",
+        "overflow-hidden min-w-70",
         className
       )}
     >
@@ -94,7 +94,7 @@ export function StatCard({ stat, className }: StatCardProps) {
           <div
             className={cn(
               "w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shrink-0",
-              "bg-gradient-to-br from-indigo-500 to-purple-600"
+              "bg-linear-to-br from-indigo-500 to-purple-600"
             )}
           >
             <IconComponent className="h-5 w-5 sm:h-6 sm:w-6 text-white" />

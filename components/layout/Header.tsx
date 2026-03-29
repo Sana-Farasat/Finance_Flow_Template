@@ -158,7 +158,7 @@ export function Header() {
                   className="fixed inset-0 z-10"
                   onClick={() => setNotificationsOpen(false)}
                 />
-                <div className="absolute right-0 sm:right-0 mt-2 w-[calc(100vw-2rem)] sm:w-72 md:w-80 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 z-20 overflow-hidden max-h-[80vh]">
+                <div className="absolute right-0 mt-2 w-[calc(100vw-5rem)] sm:w-72 md:w-80 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 z-20 overflow-hidden max-h-[70vh] flex flex-col">
                   <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-700">
                     <h3 className="font-semibold text-gray-900 dark:text-white">Notifications</h3>
                     <button className="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300">
@@ -216,7 +216,7 @@ export function Header() {
                   className="fixed inset-0 z-10"
                   onClick={() => setUserMenuOpen(false)}
                 />
-                <div className="absolute right-0 sm:right-0 mt-2 w-[calc(100vw-2rem)] sm:w-56 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 z-20 overflow-hidden max-h-[80vh]">
+                <div className="absolute right-0 mt-2 w-[calc(100vw-3rem)] sm:w-56 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 z-20 overflow-hidden max-h-[70vh] flex flex-col">
                   {/* User Info */}
                   <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
                     <p className="font-semibold text-gray-900 dark:text-white">John Doe</p>
@@ -227,10 +227,6 @@ export function Header() {
                     <Link href="/dashboard/settings" className="w-full flex items-center gap-3 px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                       <User className="h-4 w-4" />
                       Profile
-                    </Link>
-                    <Link href="/dashboard/settings" className="w-full flex items-center gap-3 px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-                      <Settings className="h-4 w-4" />
-                      Settings
                     </Link>
                   </div>
                   {/* Logout */}

@@ -169,7 +169,7 @@ export function TransactionsTable({
 
       {/* Table */}
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[600px]">
+        <table className="w-full min-w-150">
           <thead>
             <tr className="bg-gray-50 dark:bg-gray-800/50">
               <th className="px-4 sm:px-6 py-3 text-left">
