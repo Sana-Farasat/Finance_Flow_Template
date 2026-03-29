@@ -121,10 +121,10 @@ const weeklyData = [
 function CustomTooltip({ active, payload, label }: any) {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-white p-4 rounded-lg shadow-lg border border-gray-200">
-        <p className="font-medium text-gray-900">{label}</p>
+      <div className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+        <p className="font-medium text-gray-900 dark:text-white text-sm">{label}</p>
         {payload.map((p: any, index: number) => (
-          <p key={index} className="text-sm mt-1" style={{ color: p.color }}>
+          <p key={index} className="text-sm mt-1 text-gray-600 dark:text-gray-300" style={{ color: p.color }}>
             {p.name}: ${p.value.toLocaleString()}
           </p>
         ))}
@@ -142,25 +142,25 @@ export default function AnalyticsPage() {
 
   return (
     <DashboardLayout>
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         {/* Page Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Analytics</h1>
-            <p className="text-gray-500 mt-1">
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Analytics</h1>
+            <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-1">
               Deep dive into your financial performance
             </p>
           </div>
-          <div className="flex items-center gap-1 bg-gray-100 rounded-lg p-1">
+          <div className="flex items-center gap-1 bg-gray-100 dark:bg-gray-800 rounded-lg p-1 w-full sm:w-auto overflow-x-auto">
             {(["7d", "30d", "90d", "1y"] as const).map((range) => (
               <button
                 key={range}
                 onClick={() => setTimeRange(range)}
                 className={cn(
-                  "px-3 py-1.5 text-sm font-medium rounded-md transition-colors",
+                  "flex-1 sm:flex-none px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-medium rounded-md transition-colors whitespace-nowrap",
                   timeRange === range
-                    ? "bg-white text-gray-900 shadow-sm"
-                    : "text-gray-600 hover:text-gray-900"
+                    ? "bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm"
+                    : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
                 )}
               >
                 {range}
@@ -170,18 +170,18 @@ export default function AnalyticsPage() {
         </div>
 
         {/* Statistics Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
           {analyticsStats.map((stat) => (
             <StatCard key={stat.id} stat={stat} />
           ))}
         </div>
 
         {/* Revenue vs Expenses Chart */}
-        <div className="bg-white rounded-xl border border-gray-200 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-6">
+        <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-6">
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">
             Revenue vs Expenses
           </h3>
-          <div className="h-80">
+          <div className="h-64 sm:h-80">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={monthlyRevenue}>
                 <defs>
@@ -194,7 +194,7 @@ export default function AnalyticsPage() {
                     <stop offset="95%" stopColor="#8b5cf6" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" className="dark:stroke-gray-700" />
                 <XAxis
                   dataKey="label"
                   axisLine={false}
@@ -232,21 +232,21 @@ export default function AnalyticsPage() {
         </div>
 
         {/* Charts Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
           {/* Expense Breakdown */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-6">
+          <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-6">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">
               Expense Breakdown
             </h3>
-            <div className="h-64">
+            <div className="h-56 sm:h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
                   <Pie
                     data={expenseData}
                     cx="50%"
                     cy="50%"
-                    innerRadius={60}
-                    outerRadius={100}
+                    innerRadius="40%"
+                    outerRadius="80%"
                     paddingAngle={5}
                     dataKey="value"
                     label={({ name, value }) => `${name}: ${value}%`}
@@ -268,8 +268,8 @@ export default function AnalyticsPage() {
                     className="w-3 h-3 rounded-full"
                     style={{ backgroundColor: item.color }}
                   />
-                  <span className="text-sm text-gray-600">{item.name}</span>
-                  <span className="text-sm font-medium text-gray-900 ml-auto">
+                  <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">{item.name}</span>
+                  <span className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white ml-auto">
                     {item.value}%
                   </span>
                 </div>
@@ -278,14 +278,14 @@ export default function AnalyticsPage() {
           </div>
 
           {/* Weekly Performance */}
-          <div className="bg-white rounded-xl border border-gray-200 p-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-6">
+          <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-6">
+            <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4 sm:mb-6">
               Weekly Performance
             </h3>
-            <div className="h-64">
+            <div className="h-56 sm:h-64">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={weeklyData}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" className="dark:stroke-gray-700" />
                   <XAxis
                     dataKey="label"
                     axisLine={false}

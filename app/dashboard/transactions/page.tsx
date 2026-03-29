@@ -156,24 +156,24 @@ export default function TransactionsPage() {
 
   return (
     <DashboardLayout>
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         {/* Page Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Transactions</h1>
-            <p className="text-gray-500 mt-1">
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Transactions</h1>
+            <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-1">
               Manage and track all your transactions
             </p>
           </div>
-          <button className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors inline-flex items-center gap-2">
-            <Download className="h-4 w-4" />
-            Export
+          <button className="w-full sm:w-auto px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors inline-flex items-center justify-center gap-2">
+            <Download className="h-4 w-4 shrink-0" />
+            <span className="hidden sm:inline">Export</span>
           </button>
         </div>
 
         {/* Filters */}
-        <div className="bg-white rounded-xl border border-gray-200 p-4">
-          <div className="flex flex-col md:flex-row gap-4">
+        <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-3 sm:p-4">
+          <div className="flex flex-col md:flex-row gap-3 sm:gap-4">
             {/* Search */}
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
@@ -182,14 +182,14 @@ export default function TransactionsPage() {
                 placeholder="Search transactions..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300"
+                className="w-full pl-10 pr-10 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
               />
               {searchQuery && (
                 <button
                   onClick={() => setSearchQuery("")}
                   className="absolute right-3 top-1/2 -translate-y-1/2"
                 >
-                  <X className="h-4 w-4 text-gray-400 hover:text-gray-600" />
+                  <X className="h-4 w-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300" />
                 </button>
               )}
             </div>
@@ -200,7 +200,7 @@ export default function TransactionsPage() {
               <select
                 value={typeFilter}
                 onChange={(e) => setTypeFilter(e.target.value as FilterType)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300"
+                className="px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
               >
                 <option value="all">All Types</option>
                 <option value="income">Income</option>
@@ -213,7 +213,7 @@ export default function TransactionsPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value as StatusType)}
-              className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300"
+              className="px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
             >
               <option value="all">All Status</option>
               <option value="completed">Completed</option>
@@ -224,10 +224,10 @@ export default function TransactionsPage() {
 
           {/* Active Filters Display */}
           {(typeFilter !== "all" || statusFilter !== "all" || searchQuery) && (
-            <div className="flex items-center gap-2 mt-4 pt-4 border-t border-gray-200">
-              <span className="text-sm text-gray-500">Active filters:</span>
+            <div className="flex flex-wrap items-center gap-2 mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-200 dark:border-gray-700">
+              <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Active filters:</span>
               {searchQuery && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-indigo-100 text-indigo-700 text-sm rounded-full">
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 text-xs sm:text-sm rounded-full">
                   Search: &quot;{searchQuery}&quot;
                   <button onClick={() => setSearchQuery("")}>
                     <X className="h-3 w-3" />
@@ -235,7 +235,7 @@ export default function TransactionsPage() {
                 </span>
               )}
               {typeFilter !== "all" && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-indigo-100 text-indigo-700 text-sm rounded-full capitalize">
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 text-xs sm:text-sm rounded-full capitalize">
                   {typeFilter}
                   <button onClick={() => setTypeFilter("all")}>
                     <X className="h-3 w-3" />
@@ -243,7 +243,7 @@ export default function TransactionsPage() {
                 </span>
               )}
               {statusFilter !== "all" && (
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-indigo-100 text-indigo-700 text-sm rounded-full capitalize">
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-400 text-xs sm:text-sm rounded-full capitalize">
                   {statusFilter}
                   <button onClick={() => setStatusFilter("all")}>
                     <X className="h-3 w-3" />
@@ -256,7 +256,7 @@ export default function TransactionsPage() {
                   setTypeFilter("all");
                   setStatusFilter("all");
                 }}
-                className="text-sm text-gray-500 hover:text-gray-700"
+                className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
               >
                 Clear all
               </button>
@@ -266,7 +266,7 @@ export default function TransactionsPage() {
 
         {/* Results count */}
         <div className="flex items-center justify-between">
-          <p className="text-sm text-gray-500">
+          <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
             Showing {filteredTransactions.length} of {allTransactions.length} transactions
           </p>
         </div>

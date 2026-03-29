@@ -77,39 +77,40 @@ export default function SettingsPage() {
 
   return (
     <DashboardLayout>
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         {/* Page Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Settings</h1>
-            <p className="text-gray-500 mt-1">
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Settings</h1>
+            <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-1">
               Manage your account settings and preferences
             </p>
           </div>
           <button
             onClick={handleSave}
-            className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors inline-flex items-center gap-2"
+            className="w-full sm:w-auto px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors inline-flex items-center justify-center gap-2"
           >
             {saved ? (
               <>
-                <Check className="h-4 w-4" />
-                Saved!
+                <Check className="h-4 w-4 shrink-0" />
+                <span className="hidden sm:inline">Saved!</span>
               </>
             ) : (
               <>
-                <Save className="h-4 w-4" />
-                Save Changes
+                <Save className="h-4 w-4 shrink-0" />
+                <span className="hidden sm:inline">Save Changes</span>
+                <span className="sm:hidden">Save</span>
               </>
             )}
           </button>
         </div>
 
         {/* Settings Container */}
-        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden">
+        <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 overflow-hidden">
           <div className="flex flex-col md:flex-row">
             {/* Tabs Sidebar */}
-            <aside className="w-full md:w-64 border-b md:border-b-0 md:border-r border-gray-200 dark:border-gray-700">
-              <nav className="p-4 space-y-1">
+            <aside className="w-full md:w-64 border-b md:border-b-0 md:border-r border-gray-200 dark:border-gray-800">
+              <nav className="p-3 sm:p-4 space-y-1 overflow-x-auto md:overflow-visible flex md:block">
                 {settingsTabs.map((tab) => {
                   const Icon = tab.icon;
                   return (
@@ -117,13 +118,13 @@ export default function SettingsPage() {
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
                       className={cn(
-                        "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors",
+                        "w-full flex items-center gap-3 px-3 py-2.5 rounded-lg transition-colors whitespace-nowrap",
                         activeTab === tab.id
                           ? "bg-indigo-50 dark:bg-indigo-900/20 text-indigo-600 dark:text-indigo-400"
                           : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
                       )}
                     >
-                      <Icon className="h-5 w-5" />
+                      <Icon className="h-5 w-5 shrink-0" />
                       <span className="font-medium text-sm">{tab.label}</span>
                     </button>
                   );
@@ -132,7 +133,7 @@ export default function SettingsPage() {
             </aside>
 
             {/* Tab Content */}
-            <main className="flex-1 p-6">{renderTabContent()}</main>
+            <main className="flex-1 p-4 sm:p-6">{renderTabContent()}</main>
           </div>
         </div>
       </div>
@@ -145,54 +146,54 @@ export default function SettingsPage() {
  */
 function ProfileSettings() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
-        <h2 className="text-lg font-semibold text-gray-900">Profile Information</h2>
-        <p className="text-sm text-gray-500 mt-1">
+        <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Profile Information</h2>
+        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
           Update your profile information and display settings
         </p>
       </div>
 
       {/* Profile Picture */}
-      <div className="flex items-center gap-4">
-        <div className="w-20 h-20 rounded-full bg-linear-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-          <User className="h-10 w-10 text-white" />
+      <div className="flex items-center gap-3 sm:gap-4">
+        <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-linear-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+          <User className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
         </div>
         <div>
-          <button className="px-4 py-2 text-sm font-medium text-indigo-600 bg-indigo-50 rounded-lg hover:bg-indigo-100 transition-colors inline-flex items-center gap-2">
+          <button className="px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg hover:bg-indigo-100 dark:hover:bg-indigo-900/30 transition-colors inline-flex items-center gap-2">
             <Camera className="h-4 w-4" />
             Change Photo
           </button>
-          <p className="text-xs text-gray-500 mt-1">
+          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
             JPG, GIF or PNG. Max size 2MB.
           </p>
         </div>
       </div>
 
       {/* Form Fields */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             First Name
           </label>
           <input
             type="text"
             defaultValue="John"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Last Name
           </label>
           <input
             type="text"
             defaultValue="Doe"
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300 bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Email
           </label>
           <div className="relative">
@@ -200,12 +201,12 @@ function ProfileSettings() {
             <input
               type="email"
               defaultValue="john.doe@example.com"
-              className="w-full pl-11 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300"
+              className="w-full pl-11 pr-3 py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300"
             />
           </div>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Phone
           </label>
           <div className="relative">
@@ -213,12 +214,12 @@ function ProfileSettings() {
             <input
               type="tel"
               defaultValue="+1 (555) 123-4567"
-              className="w-full pl-11 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300"
+              className="w-full pl-11 pr-3 py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300"
             />
           </div>
         </div>
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Location
           </label>
           <div className="relative">
@@ -226,12 +227,12 @@ function ProfileSettings() {
             <input
               type="text"
               defaultValue="San Francisco, CA"
-              className="w-full pl-11 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300"
+              className="w-full pl-11 pr-3 py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300"
             />
           </div>
         </div>
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+          <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Website
           </label>
           <div className="relative">
@@ -239,30 +240,31 @@ function ProfileSettings() {
             <input
               type="url"
               defaultValue="https://johndoe.com"
-              className="w-full pl-11 pr-3 py-2.5 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300"
+              className="w-full pl-11 pr-3 py-2.5 border border-gray-300 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300"
             />
           </div>
         </div>
         <div className="md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
             Bio
           </label>
           <textarea
             rows={4}
             defaultValue="Product designer and entrepreneur based in San Francisco."
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300 resize-none"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-300 resize-none bg-white dark:bg-gray-800 text-gray-900 dark:text-white"
           />
         </div>
       </div>
 
       {/* Update Profile Button */}
-      <div className="flex items-center justify-end gap-3 pt-6 border-t border-gray-200 dark:border-gray-700">
-        <button className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
+      <div className="flex items-center justify-end gap-2 sm:gap-3 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-800">
+        <button className="px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
           Cancel
         </button>
-        <button className="px-6 py-2 text-sm font-medium text-white bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 rounded-lg transition-colors inline-flex items-center gap-2 shadow-lg shadow-indigo-500/30">
+        <button className="px-4 sm:px-6 py-2 text-xs sm:text-sm font-medium text-white bg-linear-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 rounded-lg transition-colors inline-flex items-center gap-2 shadow-lg shadow-indigo-500/30">
           <Save className="h-4 w-4" />
-          Update Profile
+          <span className="hidden sm:inline">Update Profile</span>
+          <span className="sm:hidden">Update</span>
         </button>
       </div>
     </div>
@@ -283,19 +285,19 @@ function NotificationSettings() {
   });
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div>
-        <h2 className="text-lg font-semibold text-gray-900">Notification Preferences</h2>
-        <p className="text-sm text-gray-500 mt-1">
+        <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Notification Preferences</h2>
+        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 mt-1">
           Manage how you receive notifications
         </p>
       </div>
 
-      <div className="space-y-4">
-        <div className="flex items-center justify-between py-3 border-b border-gray-100">
+      <div className="space-y-3 sm:space-y-4">
+        <div className="flex items-center justify-between py-3 border-b border-gray-200 dark:border-gray-800">
           <div>
-            <p className="font-medium text-gray-900">Email Notifications</p>
-            <p className="text-sm text-gray-500">Receive updates via email</p>
+            <p className="font-medium text-gray-900 dark:text-white text-xs sm:text-sm">Email Notifications</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Receive updates via email</p>
           </div>
           <Toggle
             enabled={notifications.email}
@@ -304,10 +306,10 @@ function NotificationSettings() {
             }
           />
         </div>
-        <div className="flex items-center justify-between py-3 border-b border-gray-100">
+        <div className="flex items-center justify-between py-3 border-b border-gray-200 dark:border-gray-800">
           <div>
-            <p className="font-medium text-gray-900">Push Notifications</p>
-            <p className="text-sm text-gray-500">Receive push notifications</p>
+            <p className="font-medium text-gray-900 dark:text-white text-xs sm:text-sm">Push Notifications</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Receive push notifications</p>
           </div>
           <Toggle
             enabled={notifications.push}
@@ -316,10 +318,10 @@ function NotificationSettings() {
             }
           />
         </div>
-        <div className="flex items-center justify-between py-3 border-b border-gray-100">
+        <div className="flex items-center justify-between py-3 border-b border-gray-200 dark:border-gray-800">
           <div>
-            <p className="font-medium text-gray-900">SMS Notifications</p>
-            <p className="text-sm text-gray-500">Receive text messages</p>
+            <p className="font-medium text-gray-900 dark:text-white text-xs sm:text-sm">SMS Notifications</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Receive text messages</p>
           </div>
           <Toggle
             enabled={notifications.sms}
@@ -328,10 +330,10 @@ function NotificationSettings() {
             }
           />
         </div>
-        <div className="flex items-center justify-between py-3 border-b border-gray-100">
+        <div className="flex items-center justify-between py-3 border-b border-gray-200 dark:border-gray-800">
           <div>
-            <p className="font-medium text-gray-900">Security Alerts</p>
-            <p className="text-sm text-gray-500">Get notified about security events</p>
+            <p className="font-medium text-gray-900 dark:text-white text-xs sm:text-sm">Security Alerts</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Get notified about security events</p>
           </div>
           <Toggle
             enabled={notifications.security}
@@ -340,10 +342,10 @@ function NotificationSettings() {
             }
           />
         </div>
-        <div className="flex items-center justify-between py-3 border-b border-gray-100">
+        <div className="flex items-center justify-between py-3 border-b border-gray-200 dark:border-gray-800">
           <div>
-            <p className="font-medium text-gray-900">Product Updates</p>
-            <p className="text-sm text-gray-500">Learn about new features</p>
+            <p className="font-medium text-gray-900 dark:text-white text-xs sm:text-sm">Product Updates</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Learn about new features</p>
           </div>
           <Toggle
             enabled={notifications.updates}
@@ -354,8 +356,8 @@ function NotificationSettings() {
         </div>
         <div className="flex items-center justify-between py-3">
           <div>
-            <p className="font-medium text-gray-900">Marketing Emails</p>
-            <p className="text-sm text-gray-500">Receive promotional content</p>
+            <p className="font-medium text-gray-900 dark:text-white text-xs sm:text-sm">Marketing Emails</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">Receive promotional content</p>
           </div>
           <Toggle
             enabled={notifications.marketing}

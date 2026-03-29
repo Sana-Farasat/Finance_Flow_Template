@@ -66,29 +66,30 @@ const cardsData: CardData[] = [
 export default function CardsPage() {
   return (
     <DashboardLayout>
-      <div className="space-y-6">
+      <div className="space-y-4 sm:space-y-6">
         {/* Page Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Cards</h1>
-            <p className="text-gray-500 dark:text-gray-400 mt-1">
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Cards</h1>
+            <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 mt-1">
               Manage your payment methods
             </p>
           </div>
-          <button className="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors inline-flex items-center gap-2">
-            <Plus className="h-4 w-4" />
-            Add New Card
+          <button className="w-full sm:w-auto px-3 sm:px-4 py-2 text-xs sm:text-sm font-medium text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 transition-colors inline-flex items-center justify-center gap-2">
+            <Plus className="h-4 w-4 shrink-0" />
+            <span className="hidden sm:inline">Add New Card</span>
+            <span className="sm:hidden">Add Card</span>
           </button>
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Add New Card Placeholder */}
           <button className="aspect-[1.586] rounded-2xl border-2 border-dashed border-gray-300 dark:border-gray-600 flex flex-col items-center justify-center gap-3 hover:border-indigo-500 dark:hover:border-indigo-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-            <div className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-              <Plus className="h-6 w-6 text-gray-400" />
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+              <Plus className="h-5 w-5 sm:h-6 sm:w-6 text-gray-400" />
             </div>
-            <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+            <span className="text-xs sm:text-sm font-medium text-gray-500 dark:text-gray-400">
               Add New Card
             </span>
           </button>
@@ -100,19 +101,19 @@ export default function CardsPage() {
         </div>
 
         {/* Card Settings */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+        <div className="bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-6">
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white mb-4">
             Card Settings
           </h3>
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             <div className="flex items-center justify-between py-3 border-b border-gray-200 dark:border-gray-700">
               <div className="flex items-center gap-3">
-                <Shield className="h-5 w-5 text-gray-400" />
+                <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
                 <div>
-                  <p className="font-medium text-gray-900 dark:text-white">
+                  <p className="font-medium text-gray-900 dark:text-white text-xs sm:text-sm">
                     Contactless Payments
                   </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
                     Enable tap-to-pay functionality
                   </p>
                 </div>
@@ -121,12 +122,12 @@ export default function CardsPage() {
             </div>
             <div className="flex items-center justify-between py-3 border-b border-gray-200 dark:border-gray-700">
               <div className="flex items-center gap-3">
-                <Globe className="h-5 w-5 text-gray-400" />
+                <Globe className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
                 <div>
-                  <p className="font-medium text-gray-900 dark:text-white">
+                  <p className="font-medium text-gray-900 dark:text-white text-xs sm:text-sm">
                     International Transactions
                   </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
                     Allow purchases from foreign merchants
                   </p>
                 </div>
@@ -135,12 +136,12 @@ export default function CardsPage() {
             </div>
             <div className="flex items-center justify-between py-3">
               <div className="flex items-center gap-3">
-                <Wifi className="h-5 w-5 text-gray-400" />
+                <Wifi className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
                 <div>
-                  <p className="font-medium text-gray-900 dark:text-white">
+                  <p className="font-medium text-gray-900 dark:text-white text-xs sm:text-sm">
                     Online Payments
                   </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">
+                  <p className="text-xs text-gray-500 dark:text-gray-400">
                     Enable e-commerce transactions
                   </p>
                 </div>

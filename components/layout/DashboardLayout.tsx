@@ -99,19 +99,19 @@ function DashboardContent({ children }: DashboardLayoutProps) {
       <Sidebar />
 
       {/* Main Content Wrapper */}
-      <div 
+      <div
         className={cn(
           "flex-1 flex flex-col overflow-hidden transition-all duration-300",
           // Desktop: shift content according to sidebar width
-          "lg:ml-0",           // Important: ml-0 rakho
+          "lg:ml-0",
         )}
       >
         {/* Header */}
         <Header />
 
         {/* Page Content Area */}
-        <main className="flex-1 overflow-auto p-4 md:p-6 lg:p-8 pl-4 md:pl-6 lg:pl-8">
-          <div className="w-full max-w-full mx-auto">
+        <main className="flex-1 overflow-auto p-3 sm:p-4 md:p-6 lg:p-8">
+          <div className="w-full">
             {children}
           </div>
         </main>

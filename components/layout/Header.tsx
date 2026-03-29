@@ -77,14 +77,14 @@ export function Header() {
   const unreadCount = notifications.filter((n) => n.unread).length;
 
   return (
-    <header className="sticky top-0 z-30 h-16 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+    <header className="sticky top-0 z-30 w-full h-16 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
       <div className="flex items-center justify-between h-full px-4">
         {/* Left Section: Menu Toggle + Search */}
-        <div className="flex items-center gap-4 flex-1">
+        <div className="flex items-center gap-4 flex-1 min-w-0">
           {/* Mobile Menu Toggle */}
           <button
             onClick={toggleMobile}
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors shrink-0"
             aria-label="Toggle menu"
           >
             <Menu className="h-5 w-5 text-gray-600 dark:text-gray-300" />
@@ -94,14 +94,14 @@ export function Header() {
           <div
             className={cn(
               "relative hidden sm:block transition-all duration-200",
-              searchFocused ? "w-80" : "w-64"
+              searchFocused ? "w-64 md:w-80" : "w-48 md:w-64"
             )}
           >
             <Search
               className={cn(
                 "absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4",
                 "transition-colors",
-                searchFocused ? "text-indigo-600" : "text-gray-400"
+                searchFocused ? "text-indigo-600 dark:text-indigo-400" : "text-gray-400"
               )}
             />
             <input
@@ -112,7 +112,7 @@ export function Header() {
                 "transition-all duration-200",
                 "focus:outline-none focus:ring-2 focus:ring-indigo-500/20",
                 searchFocused
-                  ? "border-indigo-300 bg-white dark:bg-gray-800"
+                  ? "border-indigo-300 dark:border-indigo-700 bg-white dark:bg-gray-800"
                   : "border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 text-gray-900 dark:text-white"
               )}
               onFocus={() => setSearchFocused(true)}
@@ -122,11 +122,11 @@ export function Header() {
         </div>
 
         {/* Right Section: Actions */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 shrink-0">
           {/* Dark Mode Toggle */}
           <button
             onClick={toggleTheme}
-            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
           >
             {theme === "dark" ? (
@@ -140,7 +140,7 @@ export function Header() {
           <div className="relative">
             <button
               onClick={() => setNotificationsOpen(!notificationsOpen)}
-              className="relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              className="relative p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               aria-label="View notifications"
             >
               <Bell className="h-5 w-5 text-gray-600 dark:text-gray-300" />
@@ -158,7 +158,7 @@ export function Header() {
                   className="fixed inset-0 z-10"
                   onClick={() => setNotificationsOpen(false)}
                 />
-                <div className="absolute right-0 mt-2 w-80 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 z-20 overflow-hidden">
+                <div className="absolute right-0 sm:right-0 mt-2 w-[calc(100vw-2rem)] sm:w-72 md:w-80 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 z-20 overflow-hidden max-h-[80vh]">
                   <div className="flex items-center justify-between px-4 py-3 border-b border-gray-200 dark:border-gray-700">
                     <h3 className="font-semibold text-gray-900 dark:text-white">Notifications</h3>
                     <button className="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300">
@@ -200,13 +200,13 @@ export function Header() {
           <div className="relative">
             <button
               onClick={() => setUserMenuOpen(!userMenuOpen)}
-              className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+              className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               aria-label="User menu"
             >
-              <div className="w-8 h-8 bg-linear-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-linear-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center shrink-0">
                 <User className="h-4 w-4 text-white" />
               </div>
-              <ChevronDown className="hidden sm:block h-4 w-4 text-gray-600 dark:text-gray-300" />
+              <ChevronDown className="hidden sm:block h-4 w-4 text-gray-600 dark:text-gray-300 shrink-0" />
             </button>
 
             {/* User Menu Dropdown */}
@@ -216,7 +216,7 @@ export function Header() {
                   className="fixed inset-0 z-10"
                   onClick={() => setUserMenuOpen(false)}
                 />
-                <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 z-20 overflow-hidden">
+                <div className="absolute right-0 sm:right-0 mt-2 w-[calc(100vw-2rem)] sm:w-56 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 z-20 overflow-hidden max-h-[80vh]">
                   {/* User Info */}
                   <div className="px-4 py-3 border-b border-gray-200 dark:border-gray-700">
                     <p className="font-semibold text-gray-900 dark:text-white">John Doe</p>
@@ -235,7 +235,7 @@ export function Header() {
                   </div>
                   {/* Logout */}
                   <div className="py-2 border-t border-gray-200 dark:border-gray-700">
-                    <Link href="/login" className="w-full flex items-center gap-3 px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+                    <Link href="/login" className="w-full flex items-center gap-3 px-4 py-2 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
                       <LogOut className="h-4 w-4" />
                       Logout
                     </Link>

@@ -46,9 +46,9 @@ interface RevenueChartProps {
 function CustomTooltip({ active, payload, label }: any) {
   if (active && payload && payload.length) {
     return (
-      <div className="bg-white p-4 rounded-lg shadow-lg border border-gray-200">
-        <p className="font-medium text-gray-900">{label}</p>
-        <p className="text-indigo-600 font-semibold mt-1">
+      <div className="bg-white dark:bg-gray-800 p-3 sm:p-4 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+        <p className="font-medium text-gray-900 dark:text-white text-sm">{label}</p>
+        <p className="text-indigo-600 dark:text-indigo-400 font-semibold mt-1 text-sm">
           ${payload[0].value.toLocaleString()}
         </p>
       </div>
@@ -64,22 +64,22 @@ export function RevenueChart({ data, className, title }: RevenueChartProps) {
   const [period, setPeriod] = useState<"7d" | "30d" | "90d">("30d");
 
   return (
-    <div className={cn("bg-white rounded-xl border border-gray-200 p-6", className)}>
+    <div className={cn("bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800 p-4 sm:p-6", className)}>
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <h3 className="text-lg font-semibold text-gray-900">{title || "Revenue Overview"}</h3>
-        
+      <div className="flex items-center justify-between mb-4 sm:mb-6 flex-wrap gap-2">
+        <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">{title || "Revenue Overview"}</h3>
+
         {/* Period Selector */}
-        <div className="flex items-center gap-1 bg-gray-100 rounded-lg p-1">
+        <div className="flex items-center gap-1 bg-gray-100 dark:bg-gray-800 rounded-lg p-1">
           {(["7d", "30d", "90d"] as const).map((p) => (
             <button
               key={p}
               onClick={() => setPeriod(p)}
               className={cn(
-                "px-3 py-1.5 text-sm font-medium rounded-md transition-colors",
+                "px-2 sm:px-3 py-1.5 text-xs sm:text-sm font-medium rounded-md transition-colors",
                 period === p
-                  ? "bg-white text-gray-900 shadow-sm"
-                  : "text-gray-600 hover:text-gray-900"
+                  ? "bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm"
+                  : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white"
               )}
             >
               {p}
@@ -89,7 +89,7 @@ export function RevenueChart({ data, className, title }: RevenueChartProps) {
       </div>
 
       {/* Chart */}
-      <div className="h-72">
+      <div className="h-64 sm:h-72">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={data}>
             {/* Gradient Definition */}
@@ -101,7 +101,7 @@ export function RevenueChart({ data, className, title }: RevenueChartProps) {
             </defs>
 
             {/* Grid */}
-            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" />
+            <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#e5e7eb" className="dark:stroke-gray-700" />
 
             {/* Axes */}
             <XAxis

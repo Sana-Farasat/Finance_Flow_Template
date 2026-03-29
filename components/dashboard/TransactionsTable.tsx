@@ -156,12 +156,12 @@ export function TransactionsTable({
   };
 
   return (
-    <div className={cn("bg-white rounded-xl border border-gray-200", className)}>
+    <div className={cn("bg-white dark:bg-gray-900 rounded-xl border border-gray-200 dark:border-gray-800", className)}>
       {/* Header */}
-      <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
-        <h3 className="text-lg font-semibold text-gray-900">Recent Transactions</h3>
+      <div className="flex items-center justify-between px-4 sm:px-6 py-4 border-b border-gray-200 dark:border-gray-800 flex-wrap gap-2">
+        <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Recent Transactions</h3>
         {showViewAll && (
-          <button className="text-sm text-indigo-600 hover:text-indigo-700 font-medium">
+          <button className="text-sm text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-medium">
             View All
           </button>
         )}
@@ -169,49 +169,49 @@ export function TransactionsTable({
 
       {/* Table */}
       <div className="overflow-x-auto">
-        <table className="w-full">
+        <table className="w-full min-w-[600px]">
           <thead>
-            <tr className="bg-gray-50">
-              <th className="px-6 py-3 text-left">
+            <tr className="bg-gray-50 dark:bg-gray-800/50">
+              <th className="px-4 sm:px-6 py-3 text-left">
                 <button
                   onClick={() => handleSort("type")}
-                  className="flex items-center gap-2 text-xs font-semibold text-gray-500 uppercase tracking-wider hover:text-gray-700"
+                  className="flex items-center gap-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider hover:text-gray-700 dark:hover:text-gray-300"
                 >
                   Type
                   {renderSortIcon("type")}
                 </button>
               </th>
-              <th className="px-6 py-3 text-left">
+              <th className="px-4 sm:px-6 py-3 text-left">
                 <button
                   onClick={() => handleSort("recipient")}
-                  className="flex items-center gap-2 text-xs font-semibold text-gray-500 uppercase tracking-wider hover:text-gray-700"
+                  className="flex items-center gap-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider hover:text-gray-700 dark:hover:text-gray-300"
                 >
                   Recipient
                   {renderSortIcon("recipient")}
                 </button>
               </th>
-              <th className="px-6 py-3 text-left">
+              <th className="px-4 sm:px-6 py-3 text-left hidden sm:table-cell">
                 <button
                   onClick={() => handleSort("date")}
-                  className="flex items-center gap-2 text-xs font-semibold text-gray-500 uppercase tracking-wider hover:text-gray-700"
+                  className="flex items-center gap-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider hover:text-gray-700 dark:hover:text-gray-300"
                 >
                   Date
                   {renderSortIcon("date")}
                 </button>
               </th>
-              <th className="px-6 py-3 text-left">
+              <th className="px-4 sm:px-6 py-3 text-left">
                 <button
                   onClick={() => handleSort("amount")}
-                  className="flex items-center gap-2 text-xs font-semibold text-gray-500 uppercase tracking-wider hover:text-gray-700"
+                  className="flex items-center gap-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider hover:text-gray-700 dark:hover:text-gray-300"
                 >
                   Amount
                   {renderSortIcon("amount")}
                 </button>
               </th>
-              <th className="px-6 py-3 text-left">
+              <th className="px-4 sm:px-6 py-3 text-left hidden sm:table-cell">
                 <button
                   onClick={() => handleSort("status")}
-                  className="flex items-center gap-2 text-xs font-semibold text-gray-500 uppercase tracking-wider hover:text-gray-700"
+                  className="flex items-center gap-2 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider hover:text-gray-700 dark:hover:text-gray-300"
                 >
                   Status
                   {renderSortIcon("status")}
@@ -219,7 +219,7 @@ export function TransactionsTable({
               </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-200">
+          <tbody className="divide-y divide-gray-200 dark:divide-gray-800">
             {sortedTransactions.map((transaction) => {
               const Icon = getTransactionIcon(transaction.type);
               const colors = getTransactionColors(transaction.type);
@@ -227,45 +227,45 @@ export function TransactionsTable({
               return (
                 <tr
                   key={transaction.id}
-                  className="hover:bg-gray-50 transition-colors"
+                  className="hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors"
                 >
                   {/* Type */}
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-3">
-                      <div className={cn("w-10 h-10 rounded-full flex items-center justify-center", colors.bg)}>
-                        <Icon className={cn("h-5 w-5", colors.icon)} />
+                  <td className="px-4 sm:px-6 py-4">
+                    <div className="flex items-center gap-2 sm:gap-3">
+                      <div className={cn("w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center", colors.bg)}>
+                        <Icon className={cn("h-4 w-4 sm:h-5 sm:w-5", colors.icon)} />
                       </div>
-                      <span className="text-sm font-medium text-gray-900 capitalize">
+                      <span className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white capitalize">
                         {transaction.type}
                       </span>
                     </div>
                   </td>
 
                   {/* Recipient */}
-                  <td className="px-6 py-4">
+                  <td className="px-4 sm:px-6 py-4">
                     <div>
-                      <p className="text-sm font-medium text-gray-900">{transaction.recipient}</p>
+                      <p className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white">{transaction.recipient}</p>
                       {transaction.description && (
-                        <p className="text-xs text-gray-500 mt-0.5">{transaction.description}</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5 hidden sm:block">{transaction.description}</p>
                       )}
                     </div>
                   </td>
 
                   {/* Date */}
-                  <td className="px-6 py-4">
-                    <span className="text-sm text-gray-500">{transaction.date}</span>
+                  <td className="px-4 sm:px-6 py-4 hidden sm:table-cell">
+                    <span className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{transaction.date}</span>
                   </td>
 
                   {/* Amount */}
-                  <td className="px-6 py-4">
+                  <td className="px-4 sm:px-6 py-4">
                     <span
                       className={cn(
-                        "text-sm font-semibold",
+                        "text-xs sm:text-sm font-semibold",
                         transaction.type === "income"
-                          ? "text-green-600"
+                          ? "text-green-600 dark:text-green-400"
                           : transaction.type === "expense"
-                          ? "text-red-600"
-                          : "text-gray-900"
+                          ? "text-red-600 dark:text-red-400"
+                          : "text-gray-900 dark:text-white"
                       )}
                     >
                       {transaction.type === "income" ? "+" : "-"}$
@@ -274,10 +274,10 @@ export function TransactionsTable({
                   </td>
 
                   {/* Status */}
-                  <td className="px-6 py-4">
+                  <td className="px-4 sm:px-6 py-4 hidden sm:table-cell">
                     <span
                       className={cn(
-                        "inline-flex px-2.5 py-1 text-xs font-medium rounded-full capitalize",
+                        "inline-flex px-2 sm:px-2.5 py-1 text-xs font-medium rounded-full capitalize",
                         getStatusStyles(transaction.status)
                       )}
                     >

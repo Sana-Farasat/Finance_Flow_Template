@@ -1,3 +1,26 @@
 @import "tailwindcss";
 
 @variant dark (&:is(.dark *));
+
+/* Dark mode heading visibility fixes */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: #f9fafb;
+}
+
+.dark .text-gray-900 {
+  color: #f9fafb !important;
+}
+
+.dark .text-gray-800 {
+  color: #e5e7eb !important;
+}
+
+/* Ensure proper contrast for all text in dark mode */
+.dark {
+  color-scheme: dark;
+}
