@@ -71,15 +71,17 @@ export function Sidebar({ onClose }: SidebarProps) {
         aria-hidden="true"
       />
 
-      {/* Sidebar */}
+      {/* Sidebar - Fixed position on mobile, relative on desktop */}
       <aside
         className={cn(
-          "top-0 left-0 z-50 h-full bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 transition-all duration-300 ease-in-out",
+          "z-[60] h-full bg-white dark:bg-gray-900 border-l border-gray-200 dark:border-gray-800 transition-all duration-300 ease-in-out",
+          // Position: fixed on mobile, relative on desktop
+          "fixed lg:relative right-0 top-0",
           // Width Control
           isCollapsed ? "lg:w-20" : "lg:w-64",
-          // Mobile Control - slide from left
+          // Mobile Control - slide from right
           isMobile
-            ? (isMobileOpen ? "w-72 translate-x-0" : "-translate-x-full w-72")
+            ? (isMobileOpen ? "w-72 translate-x-0" : "translate-x-full w-72")
             : "translate-x-0"
         )}
       >

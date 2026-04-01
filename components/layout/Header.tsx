@@ -78,7 +78,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-30 w-full h-16 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800">
-      <div className="flex items-center justify-between h-full px-4">
+      <div className="flex items-center justify-between h-full w-full max-w-full px-4">
         {/* Left Section: Menu Toggle + Search */}
         <div className="flex items-center gap-4 flex-1 min-w-0">
           {/* Mobile Menu Toggle */}

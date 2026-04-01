@@ -15,18 +15,17 @@ function DashboardContent({ children }: DashboardLayoutProps) {
 
   return (
     <div className="flex h-screen overflow-hidden bg-gray-50 dark:bg-gray-950">
-      {/* Sidebar - Fixed on Desktop, Slide on Mobile */}
+      {/* Sidebar - Fixed on Mobile, Relative on Desktop */}
       <Sidebar />
 
       {/* Main Content Wrapper */}
       <div
         className={cn(
-          "flex-1 flex flex-col overflow-hidden transition-all duration-300",
-          // Desktop: shift content according to sidebar width
-          "lg:ml-0",
+          "flex-1 flex flex-col h-full overflow-hidden transition-all duration-300",
+          // Desktop: no margin shift needed as sidebar is fixed/relative
         )}
       >
-        {/* Header */}
+        {/* Header - Full Width */}
         <Header />
 
         {/* Page Content Area */}
