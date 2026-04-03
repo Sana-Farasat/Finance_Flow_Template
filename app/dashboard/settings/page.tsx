@@ -612,7 +612,7 @@ function AppearanceSettings() {
                 "border-gray-200 hover:border-gray-300"
               )}
             >
-              <p className="font-medium text-gray-900">{option.label}</p>
+              <p className="font-small text-gray-900">{option.label}</p>
             </button>
           ))}
         </div>
