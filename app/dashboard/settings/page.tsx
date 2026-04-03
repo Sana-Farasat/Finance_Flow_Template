@@ -608,11 +608,11 @@ function AppearanceSettings() {
             <button
               key={option.id}
               className={cn(
-                "px-2 py-4 border-2 rounded-xl text-center transition-colors",
+                "p-4 border-2 rounded-xl text-center transition-colors",
                 "border-gray-200 hover:border-gray-300"
               )}
             >
-              <p className="font-sm text-gray-900">{option.label}</p>
+              <p className="text-sm font-medium text-gray-900">{option.label}</p>
             </button>
           ))}
         </div>
