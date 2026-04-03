@@ -601,7 +601,7 @@ function AppearanceSettings() {
         <h3 className="font-medium text-gray-900 mb-4">Density</h3>
         <div className="grid grid-cols-3 gap-4">
           {[
-            { id: "comfortable", label: "Comfort.." },
+            { id: "comfortable", label: "Comfort...." },
             { id: "normal", label: "Normal" },
             { id: "compact", label: "Compact" },
           ].map((option) => (
