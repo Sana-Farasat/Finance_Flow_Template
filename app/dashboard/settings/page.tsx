@@ -608,7 +608,7 @@ function AppearanceSettings() {
             <button
               key={option.id}
               className={cn(
-                "p-4 text-xl border-2 rounded-xl text-center transition-colors",
+                "px-2 py-4 border-2 rounded-xl text-center transition-colors",
                 "border-gray-200 hover:border-gray-300"
               )}
             >
